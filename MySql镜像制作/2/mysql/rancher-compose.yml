@@ -1,0 +1,25 @@
+.catalog:
+  name: "mysql"
+  version: "latest-custom"
+  questions:
+    - variable: mysql_database
+      label: "mysql database."
+      description: "Set a database name."
+      type: "string"
+      default: "test"
+    - variable: mysql_password
+      label: "mysql user password."
+      description: "Set mysql user password."
+      type: "string"
+      default: "testtest"
+    - variable: mysql_user
+      label: "mysql user name"
+      description: "Set mysql user name."
+      type: "string"
+      default: "test"
+    - variable: mysql_root_password
+      label: "mysql root password"
+      description: "Set mysql root password."
+      type: "string"
+      default: "adminadmin"
+

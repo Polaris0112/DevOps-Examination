@@ -1,0 +1,23 @@
+.catalog:
+  name: "nginx"
+  version: "latest-custom"
+  questions:
+    - variable: LOG
+      description: "LOG directory for nginx log files."
+      label: "LOG directory"
+      type: "string"
+      required: true
+      default: "log"
+    - variable: WWW
+      label: "WWW directory."
+      description: "WWW directory for nginx data"
+      type: "string"
+      required: true
+      default: "www"
+    - variable: CONF
+      label: "CONF directory"
+      description: "CONF directory for nginx configuration files."
+      type: "string"
+      required: true
+      default: "conf"
+
