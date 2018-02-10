@@ -22,9 +22,6 @@ sh install.sh
 ![Rancher页面创建完成图](https://github.com/Polaris0112/DevOps-Examination/blob/master/Rancher%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/rancher_done_web.png)
 
 
-![Rancher页面设置用户图](https://github.com/Polaris0112/DevOps-Examination/blob/master/Rancher%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/rancher_set_user_web.png)
-
-
 ![Rancher创建本地用户图](https://github.com/Polaris0112/DevOps-Examination/blob/master/Rancher%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/rancher_set_user_web.png)
 
 
