@@ -1,7 +1,9 @@
 # DevOps-Examination
 
 
-本仓库为本人对于测试题的答案
+本仓库涉及到的技术有docker, rancher, nginx, mysql, shell.
+
+
 
 运行环境：Ubuntu 16.04 LTS
 
