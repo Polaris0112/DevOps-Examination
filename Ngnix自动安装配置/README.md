@@ -18,6 +18,14 @@
 
 
 
+## 效果图
+
+
+![Nginx部署成功命令行图](https://github.com/Polaris0112/DevOps-Examination/blob/master/Ngnix%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/rancher_build_nginx_server_cmd.png)
+
+
+
+![Nginx部署成功网页端图](https://github.com/Polaris0112/DevOps-Examination/blob/master/Ngnix%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/rancher_build_nginx_server_result.png)
 
 
 
