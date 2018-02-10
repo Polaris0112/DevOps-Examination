@@ -41,13 +41,13 @@ if [ -z $backup_path ];then
 fi
 
 ## set mysql host, port, user, password, dbs, tables, logs
-db_host="192.168.0.107"
-db_port=3306
-db_name="mysql"
-db_user="root"
-db_password="adminadmin"
-table_name="user"
-log_path="/root/mysql/2/mysql/log/mysqld.log"
+db_host=""
+db_port=
+db_name=""
+db_user=""
+db_password=""
+table_name=""
+log_path=""
 
 if [[ -z $db_name || -z $db_user || -z $db_password || -z $table_name || -z $log_path ]];then
     echo "Lack of db related setting."
@@ -55,9 +55,9 @@ if [[ -z $db_name || -z $db_user || -z $db_password || -z $table_name || -z $log
 fi
 
 ## commit to git url
-git_uri="git@gitlab.rd.175game.com:cjj0596/Test.git"
-git_user="cjj0596"
-git_email="cjj0596@175game.com"
+git_uri=""
+git_user=""
+git_email=""
 
 if [ -z $git_uri ];then
     echo "Lack of git uri."
