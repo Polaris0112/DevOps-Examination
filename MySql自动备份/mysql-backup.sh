@@ -33,37 +33,39 @@ fi
 
 
 ## set backup location
-backup_path=""
+backup_path="/root/backup"
 
 if [ -z $backup_path ];then
     echo "Lack of bakcup path setting."
     exit 1
 fi
 
-## set mysql user, password, dbs, tables, logs
-db_name=""
-db_user=""
-db_password=""
-table_name=""
-log_path=""
+## set mysql host, port, user, password, dbs, tables, logs
+db_host="192.168.0.107"
+db_port=3306
+db_name="mysql"
+db_user="root"
+db_password="adminadmin"
+table_name="user"
+log_path="/root/mysql/2/mysql/log/mysqld.log"
 
-if [[ -z $db_name || -z $db_user || -z $db_password || -z $table_name || -z $log_path]];then
+if [[ -z $db_name || -z $db_user || -z $db_password || -z $table_name || -z $log_path ]];then
     echo "Lack of db related setting."
     exit 1
 fi
 
-
 ## commit to git url
-git_uri=""
+git_uri="git@gitlab.rd.175game.com:cjj0596/Test.git"
+git_user="cjj0596"
+git_email="cjj0596@175game.com"
 
-if [ -z $git_url ];then
-    echo "Lack of git url."
+if [ -z $git_uri ];then
+    echo "Lack of git uri."
     exit 1
 fi
 
-
 ## set compress format (only zip/tar/7z/rar)
-compress_format=""
+compress_format="zip"
 
 if [ -z $compress_format ];then
     echo "Lack of compress format (zip/tar/7z/rar)."
@@ -88,13 +90,13 @@ if [ $? -ne 0 ];then
 fi  
 
 
-## set role of logpath
+## set role of backup path
 chown -R mysqlbackup:mysqlbackup $backup_path
 
 ## create dir base on timestamp and backup db/tables and log
-mkdir -p ${logpath}/${timedate}-${timestamp}
-mysqldump -u${db_user} -p${db_password} --databases ${db_name} --tables ${table_name} > ${logpath}/${timedate}-${timestamp}
-cp ${log_path} ${logpath}/${timedate}-${timestamp}
+mkdir -p ${backup_path}/${timedate}-${timestamp}/
+mysqldump -h ${db_host} -P ${db_port} -u${db_user} -p${db_password} --databases ${db_name} --tables ${table_name} > ${backup_path}/${timedate}-${timestamp}/dump.sql
+cp ${log_path} ${backup_path}/${timedate}-${timestamp}/
 
 ## chose one of compress format
 if [[ "$compress_format" == "zip" ]];then
@@ -102,63 +104,63 @@ if [[ "$compress_format" == "zip" ]];then
         apt-get install -y zip unzip
     fi
     ## compress
-    cd ${logpath}
-    zip -r ${timedate}-${timestamp}.zip ${timedate}-${timestamp}
+    cd ${backup_path}/${timedate}-${timestamp}
+    zip -r ${timedate}-${timestamp}.zip ${backup_path}/${timedate}-${timestamp}
     
     ## test unzip
     zip -T ${timedate}-${timestamp}.zip
     if [ $? -eq 0 ];then
         echo "zip file is fine."
         compress_filename="${timedate}-${timestamp}.zip"
-        rm -rf ${log_path} ${logpath}/${timedate}-${timestamp}
+        #rm -rf ${backup_path}/${timedate}-${timestamp}
     fi
 
-elif [[ "$compress_format" == "tar" ]];
+elif [[ "$compress_format" == "tar" ]];then
     if [ $(dpkg -l | grep -E 'tar' | wc -l) -eq 0 ];then
         apt-get install -y tar
     fi
     ## compress
-    cd ${logpath}
-    tar -zcf ${timedate}-${timestamp}.tar.gz ${timedate}-${timestamp}
+    cd ${backup_path}/${timedate}-${timestamp}
+    tar -zcf ${timedate}-${timestamp}.tar.gz ${backup_path}/${timedate}-${timestamp}
     
     ## test unzip
-    tar -jtf ${timedate}-${timestamp}.tar.gz
+    tar -tf ${timedate}-${timestamp}.tar.gz
     if [ $? -eq 0 ];then
         echo "tar.gz file is fine."
         compress_filename="${timedate}-${timestamp}.tar.gz"
-        rm -rf ${log_path} ${logpath}/${timedate}-${timestamp}
+        #rm -rf ${backup_path}/${timedate}-${timestamp}
     fi
 
-elif [[ "$compress_format" == "7z" ]];
+elif [[ "$compress_format" == "7z" ]];then
     if [ $(dpkg -l | grep -E '7zip' | wc -l) -eq 0 ];then
         apt-get install -y p7zip-full p7zip
     fi
     ## compress
-    cd ${logpath}
-    7z a -t7z -r ${timedate}-${timestamp}.7z  ${timedate}-${timestamp}
+    cd ${backup_path}/${timedate}-${timestamp}
+    7z a -t7z -r ${timedate}-${timestamp}.7z  ${backup_path}/${timedate}-${timestamp}
 
     ## test unzip
     7z t ${timedate}-${timestamp}.7z
     if [ $? -eq 0 ];then
         echo "tar.gz file is fine."
         compress_filename="${timedate}-${timestamp}.7z"
-        rm -rf ${log_path} ${logpath}/${timedate}-${timestamp}
+        #rm -rf ${backup_path}/${timedate}-${timestamp}
     fi
 
-elif [[ "$compress_format" == "rar" ]];
+elif [[ "$compress_format" == "rar" ]];then
     if [ $(dpkg -l | grep -E 'unrar' | wc -l) -eq 0 ];then
         apt-get install -y unrar rar
     fi
     ## compress
-    cd ${logpath}
-    rar a ${timedate}-${timestamp}.rar  ${timedate}-${timestamp}
+    cd ${backup_path}/${timedate}-${timestamp}
+    rar a ${timedate}-${timestamp}.rar  ${backup_path}/${timedate}-${timestamp}
 
     ## test rar
     rar t ${timedate}-${timestamp}.rar
     if [ $? -eq 0 ];then
         echo "tar.gz file is fine."
         compress_filename="${timedate}-${timestamp}.rar"
-        rm -rf ${log_path} ${logpath}/${timedate}-${timestamp}
+        #rm -rf ${backup_path}/${timedate}-${timestamp}
     fi
 
 else
@@ -168,7 +170,10 @@ fi
 
 
 ## commit to setting git
-cd ${logpath}
+cd ${backup_path}/${timedate}-${timestamp}
+git config --global user.email "$git_email"
+git config --global user.name "$git_user"
+
 git init
 git add ${compress_filename}
 git commit -m "commit backup $timestamp"

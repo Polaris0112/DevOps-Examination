@@ -13,6 +13,12 @@ download_rancher()
 
   # pull rancher/server:stable mirror
   docker pull rancher/server:stable
+  docker pull rancher/healthcheck:v0.3.3
+  docker pull rancher/net:v0.13.7
+  docker pull rancher/net:holder
+  docker pull rancher/metadata:v0.9.5
+  docker pull rancher/network-manager:v0.7.19
+  docker pull rancher/scheduler:v0.8.3
 
   echo "Pull mirror done."
 }

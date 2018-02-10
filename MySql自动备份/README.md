@@ -31,6 +31,10 @@ sh mysql-backup.sh
 
 **mysql数据库相关**
 
+`db_host`:mysql数据库地址
+
+`db_port`:mysql数据库端口
+
 `db_name`:mysql备份数据库名
 
 `db_user`:mysql备份数据库用户
@@ -46,6 +50,13 @@ sh mysql-backup.sh
 **git地址**
 
 `git_uri`:备份文件需要提交到的git仓库地址
+
+`git_user`:git仓库配置的用户名
+
+`git_email`:git仓库配置的邮件名
+
+
+**注意：**还要配置好git仓库网页中对应的公私钥
 
 
 **指定压缩格式**
