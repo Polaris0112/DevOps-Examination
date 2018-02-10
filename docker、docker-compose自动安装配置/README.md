@@ -9,6 +9,14 @@ sh install.sh
 
 
 
+## 效果图
+
+![成功运行后命令行图](https://github.com/Polaris0112/DevOps-Examination/blob/master/docker%E3%80%81docker-compose%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/install_docker_and_docker_compose_cmd.png)
+
+
+
+![成功运行后网页效果图](https://github.com/Polaris0112/DevOps-Examination/blob/master/docker%E3%80%81docker-compose%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/install_docker_and_docker_compose_result.png)
+
 
 
 

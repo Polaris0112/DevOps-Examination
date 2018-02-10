@@ -69,6 +69,18 @@ sh mysql-backup.sh
 
 
 
+
+## 效果图
+
+![数据库备份成功命令行图](https://github.com/Polaris0112/DevOps-Examination/blob/master/MySql%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD/mysql_dump_cmd.png)
+
+
+![数据库备份成功网页图](https://github.com/Polaris0112/DevOps-Examination/blob/master/MySql%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD/mysql_dump_reuslt.png)
+
+
+![数据库备份参数参考图](https://github.com/Polaris0112/DevOps-Examination/blob/master/MySql%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD/mysql_backup_setting.png)
+
+
 ## 关于使用scp上传脚本
 ### 运行示例：
 ```shell

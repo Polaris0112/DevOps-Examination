@@ -59,6 +59,20 @@
 
 
 
+## 效果图
+
+![任务1成功命令行截图](https://github.com/Polaris0112/DevOps-Examination/blob/master/MySql%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/rancher_mysql_service_cmd.png)
+
+
+![任务1成功网页端显示](https://github.com/Polaris0112/DevOps-Examination/blob/master/MySql%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/rancher_mysql_reuslt.png)
+
+
+![任务2检查数据库服务启动图](https://github.com/Polaris0112/DevOps-Examination/blob/master/MySql%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/rancher_check_mysql_is_running.png)
+
+
+
+
+
 
 ## 关于使用scp上传脚本
 ### 运行示例：
